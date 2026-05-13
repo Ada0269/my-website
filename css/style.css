@@ -798,27 +798,15 @@ ul { list-style: none; }
 .work-card:hover { border-color: var(--accent-border); transform: translateY(-2px); }
 
 .work-thumb {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
   background: var(--accent-subtle);
   position: relative;
   overflow: hidden;
 }
 .work-thumb img {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.work-thumb .work-icon {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  opacity: 0.5;
-  pointer-events: none;
+  height: auto;
 }
 
 .work-info { padding: 18px 20px; }
@@ -884,8 +872,10 @@ ul { list-style: none; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  max-width: 780px; width: 100%;
-  padding: 24px 24px 28px;
+  max-width: 90vw; width: 100%;
+  max-height: 95vh;
+  display: flex; flex-direction: column;
+  padding: 20px 20px 24px;
   position: relative;
   transform: translateY(12px);
   transition: transform var(--transition);
@@ -909,10 +899,12 @@ ul { list-style: none; }
   overflow: hidden;
   background: var(--accent-subtle);
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  flex: 1;
+  min-height: 0;
 }
 .gallery-img {
-  width: 100%; height: auto; max-height: 60vh;
+  width: 100%; height: 100%;
   object-fit: contain; display: block;
   background: #000;
 }
