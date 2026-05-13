@@ -361,6 +361,7 @@ ul { list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  width: fit-content;
   padding: 6px 16px;
   background: var(--accent-subtle);
   color: var(--accent);
@@ -541,7 +542,7 @@ ul { list-style: none; }
 .exp-layout {
   display: grid;
   grid-template-columns: 2.3fr 1fr 2.3fr;
-  padding-top: 0;
+  padding-top: 16px;
   gap: 24px;
   align-items: start;
 }
@@ -575,7 +576,7 @@ ul { list-style: none; }
 .exp-card-main, .exp-card-side {
   position: relative;
   z-index: 2;
-  margin-top: -8vh;
+  margin-top: 0;
 }
 .exp-card-inner {
   background: rgba(255,255,255,0.2);
@@ -703,7 +704,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: clamp(24px, 5vw, 48px);
-  margin-top: -8vh;
+  margin-top: 0;
 }
 #skills .section-label { margin-top: 0; position: relative; z-index: 10; }
 
@@ -804,7 +805,8 @@ ul { list-style: none; }
 /* ============================================================
    WORKS — Grid cards
    ============================================================ */
-#works { padding-top: 80px; }
+#skills { padding-top: 60px; }
+#works { padding-top: 60px; }
 #evaluation { padding-top: 80px; }
 .works-grid {
   display: grid;
@@ -860,7 +862,7 @@ ul { list-style: none; }
 }
 .eval-figure img {
   width: auto;
-  max-height: 320px;
+  max-height: 400px;
   object-fit: contain;
 }
 .eval-list {
@@ -870,7 +872,7 @@ ul { list-style: none; }
   gap: 16px;
 }
 .eval-list li {
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   color: var(--text-secondary);
   line-height: 1.7;
   padding-left: 20px;
@@ -1067,7 +1069,7 @@ ul { list-style: none; }
   /* Evaluation */
   .eval-layout { flex-direction: column-reverse; }
   .eval-single { padding: 28px 24px; }
-  .eval-figure img { max-height: 200px; }
+  .eval-figure img { max-height: 260px; }
 
   /* Footer */
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
