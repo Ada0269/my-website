@@ -291,6 +291,31 @@
     }
   }
 
+  // Burst particles at given position (for nav hover)
+  function burstAt(x, y, count) {
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 3 + 2;
+      particles.push({
+        x: x,
+        y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        r: Math.random() * 2.5 + 1.5,
+        life: 1
+      });
+    }
+  }
+
+  // Throttled burst helper
+  let burstTimer = 0;
+  function tryBurst(e) {
+    const now = performance.now();
+    if (now - burstTimer < 150) return;
+    burstTimer = now;
+    burstAt(e.clientX, e.clientY, 16);
+  }
+
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
@@ -299,45 +324,57 @@
     const lineColor = isDark ? 'rgba(180,184,220,' : 'rgba(80,82,140,';
 
     // Update & draw particles
-    for (let i = 0; i < particles.length; i++) {
+    for (let i = particles.length - 1; i >= 0; i--) {
       const p = particles[i];
+
+      // Burst particle lifecycle
+      if (p.life !== undefined) {
+        p.life -= 0.02;
+        if (p.life <= 0) { particles.splice(i, 1); continue; }
+        p.vx *= 0.96;
+        p.vy *= 0.96;
+      }
 
       // Move
       p.x += p.vx;
       p.y += p.vy;
 
-      // Bounce edges
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-      p.x = Math.max(0, Math.min(width, p.x));
-      p.y = Math.max(0, Math.min(height, p.y));
+      // Bounce edges (only for normal particles)
+      if (p.life === undefined) {
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+        p.x = Math.max(0, Math.min(width, p.x));
+        p.y = Math.max(0, Math.min(height, p.y));
 
-      // Mouse repulsion
-      const dx = p.x - mouseX;
-      const dy = p.y - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_RADIUS && dist > 0) {
-        const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
-        p.vx += (dx / dist) * force * 0.1;
-        p.vy += (dy / dist) * force * 0.1;
-        // Clamp speed
-        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        if (speed > 5) {
-          p.vx = (p.vx / speed) * 5;
-          p.vy = (p.vy / speed) * 5;
+        // Mouse repulsion
+        const dx = p.x - mouseX;
+        const dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS && dist > 0) {
+          const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+          p.vx += (dx / dist) * force * 0.1;
+          p.vy += (dy / dist) * force * 0.1;
+          const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          if (speed > 5) {
+            p.vx = (p.vx / speed) * 5;
+            p.vy = (p.vy / speed) * 5;
+          }
         }
       }
 
       // Draw dot
+      const alpha = p.life !== undefined ? p.life : 1;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = dotColor;
+      ctx.fillStyle = dotColor.replace(/[\d.]+\)$/, (alpha * 0.9).toFixed(2) + ')');
       ctx.fill();
     }
 
-    // Draw connections
+    // Draw connections (normal particles only)
     for (let i = 0; i < particles.length; i++) {
+      if (particles[i].life !== undefined) continue;
       for (let j = i + 1; j < particles.length; j++) {
+        if (particles[j].life !== undefined) continue;
         const a = particles[i], b = particles[j];
         const dx = a.x - b.x, dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -356,6 +393,7 @@
     // Draw mouse connections
     if (mouseX > 0 && mouseY > 0) {
       for (const p of particles) {
+        if (p.life !== undefined) continue;
         const dx = p.x - mouseX, dy = p.y - mouseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < MOUSE_RADIUS) {
@@ -391,6 +429,11 @@
   window.addEventListener('resize', () => {
     resize();
     createParticles();
+  });
+
+  // Nav hover burst
+  document.querySelectorAll('.nav-link, .nav-logo').forEach(function (el) {
+    el.addEventListener('mouseenter', tryBurst);
   });
 
   initParticles();
