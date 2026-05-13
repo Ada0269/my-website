@@ -783,7 +783,7 @@ ul { list-style: none; }
    ============================================================ */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--grid-gap);
 }
 
@@ -913,7 +913,6 @@ ul { list-style: none; }
   .container { padding: 0 32px; }
   .nav-inner { padding: 0 32px; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  .works-grid { grid-template-columns: repeat(2, 1fr); }
   .exp-detail { grid-template-columns: 1fr; gap: 20px; }
 }
 
