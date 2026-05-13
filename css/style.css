@@ -805,8 +805,8 @@ ul { list-style: none; }
 /* ============================================================
    WORKS — Grid cards
    ============================================================ */
-#skills { padding-top: 60px; }
-#works { padding-top: 60px; }
+#skills { padding-top: 20px; padding-bottom: 60px; }
+#works { padding-top: 20px; padding-bottom: 60px; }
 #evaluation { padding-top: 80px; }
 .works-grid {
   display: grid;
