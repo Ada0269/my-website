@@ -897,7 +897,7 @@ ul { list-style: none; }
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: #000;
+  background: #dfdfdf;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 14px;
   flex: 1;
