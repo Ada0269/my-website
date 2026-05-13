@@ -854,7 +854,7 @@ ul { list-style: none; }
   border-radius: var(--radius-md);
   padding: 36px 40px;
   flex: 1;
-  max-width: 720px;
+  max-width: 860px;
 }
 .eval-figure {
   flex-shrink: 0;
