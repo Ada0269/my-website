@@ -129,29 +129,24 @@
   const btnNext = modal.querySelector('.gallery-next');
   const btnClose = modal.querySelector('.gallery-close');
 
-  // Each project: folder + image count
   const workData = [
     {
       folder: 'assets/works/window-display',
-      count: 5,
       title: '季节主题橱窗与营销活动陈列项目',
       desc: '负责多季主题橱窗及多场营销活动的陈列方案制定与全国落地，协同空间设计部门完成方案优化，确保创意与执行的平衡，有效带动门店客流与销售额提升。'
     },
     {
       folder: 'assets/works/props-upgrade',
-      count: 5,
       title: '店务陈列道具迭代升级项目',
       desc: '主导完成多代核心道具系统的研发与标准制定，兼顾品牌调性、终端实用性与成本管控，为公司节省大量采购成本。'
     },
     {
       folder: 'assets/works/showroom',
-      count: 5,
       title: '品牌样板展示空间打造项目',
       desc: '负责多季订货会静态展厅与多届宁波服装节展厅的设计与布场，打造品牌最高标准的视觉样板，为全国门店提供可复制的参考范本。'
     },
     {
       folder: 'assets/works/visual-content',
-      count: 5,
       title: '品牌视觉内容策划与拍摄统筹项目',
       desc: '统筹品牌画册、形象大片的视觉创意策划与现场监督指导，全流程把控成片风格与输出质量，为品牌市场推广提供高质量视觉素材支撑。'
     }
@@ -159,28 +154,67 @@
 
   let currentProject = -1;
   let currentIndex = 0;
+  const imageCountCache = {}; // auto-detected per project
 
   function getImagePath(folder, idx) {
-    const n = String(idx + 1).padStart(2, '0');
-    return folder + '/' + n + '.jpg';
+    return folder + '/' + String(idx + 1).padStart(2, '0') + '.png';
+  }
+
+  function detectImageCount(projectIdx, callback) {
+    if (imageCountCache[projectIdx] !== undefined) {
+      callback(imageCountCache[projectIdx]);
+      return;
+    }
+    const folder = workData[projectIdx].folder;
+    let count = 0;
+    function tryNext() {
+      const img = new Image();
+      img.onload = function () {
+        count++;
+        tryNext();
+      };
+      img.onerror = function () {
+        imageCountCache[projectIdx] = count;
+        callback(count);
+      };
+      img.src = getImagePath(folder, count);
+    }
+    tryNext();
   }
 
   function updateGallery() {
     const data = workData[currentProject];
+    const count = imageCountCache[currentProject] || 0;
     galleryImg.src = getImagePath(data.folder, currentIndex);
     galleryTitle.textContent = data.title;
     galleryDesc.textContent = data.desc;
-    galleryCounter.textContent = (currentIndex + 1) + ' / ' + data.count;
+    galleryCounter.textContent = count ? (currentIndex + 1) + ' / ' + count : '...';
     btnPrev.disabled = currentIndex === 0;
-    btnNext.disabled = currentIndex === data.count - 1;
+    btnNext.disabled = currentIndex >= count - 1;
   }
 
   function openGallery(index) {
     currentProject = index;
     currentIndex = 0;
-    updateGallery();
+
+    // Show immediately with what we have
+    const data = workData[index];
+    galleryImg.src = getImagePath(data.folder, 0);
+    galleryTitle.textContent = data.title;
+    galleryDesc.textContent = data.desc;
+    galleryCounter.textContent = '...';
+    btnPrev.disabled = true;
+    btnNext.disabled = true;
+
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    // Detect total count in background
+    detectImageCount(index, function (count) {
+      if (currentProject === index && modal.classList.contains('open')) {
+        updateGallery();
+      }
+    });
   }
 
   function closeGallery() {
@@ -196,7 +230,8 @@
   }
 
   function nextImage() {
-    if (currentIndex < workData[currentProject].count - 1) {
+    const count = imageCountCache[currentProject] || 999;
+    if (currentIndex < count - 1) {
       currentIndex++;
       updateGallery();
     }
