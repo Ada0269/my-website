@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ada 蔡娜丹 — 服装品牌视觉营销专家，10年全链路陈列与培训体系经验">
+  <title>Ada 蔡娜丹 | 服装品牌视觉营销</title>
+  <script>!function(){var t=localStorage.getItem('theme');t=t||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+  <!-- ===== GLOBAL PARTICLE BACKGROUND ===== -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- ===== LOADING ===== -->
+  <div class="loader" id="loader"><div class="loader-spinner"></div></div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Ada</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">关于我</a></li>
+        <li><a href="#experience" class="nav-link">工作经历</a></li>
+        <li><a href="#skills" class="nav-link">专业技能</a></li>
+        <li><a href="#works" class="nav-link">作品展示</a></li>
+        <li><a href="#evaluation" class="nav-link">自我评价</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换深色/浅色模式">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+      <video class="hero-video-bg" src="assets/%E4%B8%BB%E9%A1%B5%E8%A7%86%E9%A2%91%E7%99%BD%E5%BA%95.MP4" autoplay loop muted playsinline></video>
+
+      <div class="hero-content">
+        <h1 class="hero-name"><span class="hero-hi">Hi!</span> 我是 <span class="hero-name-accent">Ada</span></h1>
+        <p class="hero-slogan">用色彩讲述故事，用设计定义可能。</p>
+        <div class="hero-buttons">
+          <a href="#about" class="hero-badge">资深陈列师</a>
+          <a href="#about" class="hero-cta">了解更多 →</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section reveal">
+      <div class="container">
+        <div class="about-layout">
+          <div class="about-card">
+            <span class="section-label">About me</span>
+            <h2 class="section-title">Ada 蔡娜丹</h2>
+            <p class="about-intro">10 年服装品牌视觉营销体系建设，从终端零售到总部视觉企划与管理，具备完整的职业成长路径。<br>擅长陈列标准体系搭建、橱窗/DP 点设计、全国培训落地与团队管理，通过标准化视觉管理赋能品牌形象提升与销售增长。</p>
+
+            <div class="about-contact">
+              <span><span class="c-dot"></span> 592430590@qq.com</span>
+              <span><span class="c-dot"></span> 13454780269</span>
+              <span><span class="c-dot"></span> 宁波</span>
+              <span><span class="c-dot"></span> 1995.01</span>
+            </div>
+
+            <div class="about-section">
+              <h3>教育背景</h3>
+              <div class="edu-row">
+                <div class="edu-item">
+                  <div class="edu-major">服装陈列与展示设计</div>
+                  <div class="edu-school">浙江纺织服装职业技术学院</div>
+                  <div class="edu-time">2013.09 — 2016.06 · 大专</div>
+                </div>
+                <div class="edu-item">
+                  <div class="edu-major">广告学</div>
+                  <div class="edu-school">国家开放大学</div>
+                  <div class="edu-time">2017.10 — 2020.01 · 本科</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tag-row">
+              <span class="tag">陈列员资格证</span>
+              <span class="tag">色彩设计师证</span>
+            </div>
+          </div>
+
+          <div class="about-visual">
+            <img src="assets/5%E6%9C%8813%E6%97%A5.gif" alt="Ada" class="about-figure">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <span class="section-label">Experience / 工作经历</span>
+
+        <div class="exp-layout">
+
+          <!-- 左：百慕 -->
+          <article class="exp-card-main" data-exp="0">
+            <div class="exp-card-inner">
+              <div class="exp-header">
+                <span class="exp-index">01</span>
+                <div class="exp-info">
+                  <div class="exp-company">宁波百慕品牌管理有限公司</div>
+                  <div class="exp-meta-row">
+                    <span class="exp-role">资深陈列师 / 内训培训师 / 项目负责人</span>
+                    <span>2019.08 — 至今</span>
+                  </div>
+                </div>
+                <button class="exp-toggle" aria-label="展开详情">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+              </div>
+              <div class="exp-body">
+                <div class="exp-detail">
+                  <div class="exp-col">
+                    <h4>核心职责</h4>
+                    <ul>
+                      <li>独立制定全国统一陈列执行标准，覆盖橱窗、DP点、货区陈列及配饰搭配规范</li>
+                      <li>搭建从需求调研、课件开发到现场执行、效果评估的完整培训体系</li>
+                      <li>协同设计部门制定橱窗及DP点方案，负责节日及营销活动陈列方案制定与全国落地</li>
+                      <li>制定店铺各类陈列道具及配饰执行标准，主导多代核心道具全生命周期研发与换代升级</li>
+                      <li>负责多季全系列新品陈列搭配，统筹品牌画册与形象大片拍摄，担任现场美术指导</li>
+                    </ul>
+                  </div>
+                  <div class="exp-col">
+                    <h4>核心成果</h4>
+                    <ul>
+                      <li>建立全国统一陈列标准体系，覆盖所有直营与加盟门店，显著提升品牌视觉统一性</li>
+                      <li>制作多期标准化陈列手册与视频培训课程，开展数十场区域现场培训带教</li>
+                      <li>多项节日及主推系列营销陈列方案成功带动门店客流与销售增长</li>
+                      <li>多代道具系统研发在提升终端形象的同时有效控制采购成本</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="exp-hint">查看详情</span>
+          </article>
+
+          <!-- GIF 小人 -->
+          <div class="exp-figure">
+            <img src="assets/5%E6%9C%8813%E6%97%A5(1).gif" alt="工作经历">
+          </div>
+
+          <!-- 右列 -->
+          <div class="exp-side-stack">
+            <article class="exp-card-side" data-exp="1">
+              <div class="exp-card-inner">
+                <div class="exp-header">
+                  <span class="exp-index">02</span>
+                  <div class="exp-info">
+                    <div class="exp-company">宁波马骑顿儿童用品有限公司</div>
+                    <div class="exp-meta-row">
+                      <span class="exp-role">陈列师 / 区域陈列培训</span>
+                      <span>2017.05 — 2019.07</span>
+                    </div>
+                  </div>
+                  <button class="exp-toggle" aria-label="展开详情">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </div>
+                <div class="exp-body">
+                  <div class="exp-detail">
+                    <div class="exp-col">
+                      <h4>核心职责</h4>
+                      <ul>
+                        <li>负责上海区域多家门店陈列标准落地与日常督导，现场带教门店员工陈列技巧与搭配逻辑</li>
+                        <li>参与多季品牌陈列方案设计，负责搭配手册制作与波段上新培训材料开发</li>
+                        <li>独立负责IP主题快闪店全案设计与执行，打造沉浸式营销空间</li>
+                        <li>收集一线门店陈列执行反馈，向总部提出标准优化建议</li>
+                      </ul>
+                    </div>
+                    <div class="exp-col">
+                      <h4>核心成果</h4>
+                      <ul>
+                        <li>确保区域内新品陈列100%按总部标准执行</li>
+                        <li>多项标准优化建议被总部采纳并在全国推广</li>
+                        <li>IP快闪店活动期间门店销售额显著增长</li>
+                        <li>参与新一代店务陈列系统研发，制定道具使用与陈列执行标准</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="exp-hint">查看详情</span>
+            </article>
+
+            <article class="exp-card-side" data-exp="2">
+              <div class="exp-card-inner">
+                <div class="exp-header">
+                  <span class="exp-index">03</span>
+                  <div class="exp-info">
+                    <div class="exp-company">宁波乐町时尚服饰有限公司</div>
+                    <div class="exp-meta-row">
+                      <span class="exp-role">零售管理（储备至店长）</span>
+                      <span>2016.01 — 2017.05</span>
+                    </div>
+                  </div>
+                  <button class="exp-toggle" aria-label="展开详情">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                </div>
+                <div class="exp-body">
+                  <div class="exp-detail">
+                    <div class="exp-col">
+                      <h4>核心职责</h4>
+                      <ul>
+                        <li>完成「超级店长」全模块培训，系统掌握时尚女装运营逻辑与经营思维</li>
+                        <li>负责门店团队带教，涵盖销售技巧与陈列技能培训</li>
+                      </ul>
+                    </div>
+                    <div class="exp-col">
+                      <h4>核心成果</h4>
+                      <ul>
+                        <li>推动门店销售额连续多月显著增长</li>
+                        <li>完成从零售终端到总部企划的完整职业路径积累</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span class="exp-hint">查看详情</span>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <span class="section-label">Skills / 专业技能</span>
+
+        <div class="skills-layout">
+
+          <!-- 左：小人 GIF -->
+          <div class="skills-figure">
+            <img src="assets/5%E6%9C%8813%E6%97%A5(2).gif" alt="技能">
+          </div>
+
+          <!-- 右：合并卡片 -->
+          <div class="skills-cards">
+            <div class="skill-card-main">
+              <h3>核心能力</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <span class="skill-icon">🎯</span>
+                  <div class="skill-text">
+                    <strong>陈列标准制定</strong>
+                    <p>独立制定全国统一陈列执行标准，涵盖橱窗、DP点、货区陈列及配饰搭配规范</p>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-icon">🪟</span>
+                  <div class="skill-text">
+                    <strong>橱窗/DP点设计</strong>
+                    <p>根据季度主题与商品策略协同设计橱窗及DP点方案</p>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-icon">📚</span>
+                  <div class="skill-text">
+                    <strong>培训体系搭建</strong>
+                    <p>从需求调研、课件开发到现场执行与效果评估的完整体系</p>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-icon">🛠</span>
+                  <div class="skill-text">
+                    <strong>道具研发</strong>
+                    <p>制定道具执行标准，主导核心道具全生命周期研发与换代升级</p>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-icon">🤝</span>
+                  <div class="skill-text">
+                    <strong>跨部门协作</strong>
+                    <p>有效协同设计、零售、市场、商品等部门</p>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <span class="skill-icon">🎬</span>
+                  <div class="skill-text">
+                    <strong>视觉内容制作</strong>
+                    <p>统筹品牌画册与形象大片拍摄，担任美术指导</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-divider"></div>
+
+              <h3>软件工具</h3>
+              <div class="tools-grid">
+                <span class="tool-item">🖌 Photoshop</span>
+                <span class="tool-item">🎨 Illustrator</span>
+                <span class="tool-item">✏️ CorelDRAW</span>
+                <span class="tool-item">📐 SketchUp</span>
+                <span class="tool-item">✂️ 剪映</span>
+                <span class="tool-item">🤖 Gemini AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORKS ===== -->
+    <section id="works" class="section reveal">
+      <div class="container">
+        <span class="section-label">Works / 作品展示</span>
+
+        <div class="works-grid">
+          <div class="work-card" data-work="0">
+            <div class="work-thumb">
+              <img src="assets/work-1.jpg" alt="" onerror="this.style.display='none'">
+              <span class="work-icon">🎪</span>
+            </div>
+            <div class="work-info">
+              <h3>季节主题橱窗与营销活动陈列项目</h3>
+              <p>负责多季主题橱窗及多场营销活动的陈列方案制定与全国落地</p>
+            </div>
+          </div>
+          <div class="work-card" data-work="1">
+            <div class="work-thumb">
+              <img src="assets/work-2.jpg" alt="" onerror="this.style.display='none'">
+              <span class="work-icon">🔧</span>
+            </div>
+            <div class="work-info">
+              <h3>店务陈列道具迭代升级项目</h3>
+              <p>主导完成多代核心道具系统研发与标准制定，兼顾品牌调性与成本管控</p>
+            </div>
+          </div>
+          <div class="work-card" data-work="2">
+            <div class="work-thumb">
+              <img src="assets/work-3.jpg" alt="" onerror="this.style.display='none'">
+              <span class="work-icon">🏛</span>
+            </div>
+            <div class="work-info">
+              <h3>品牌样板展示空间打造项目</h3>
+              <p>负责多季订货会静态展厅与宁波服装节展厅的设计与布场</p>
+            </div>
+          </div>
+          <div class="work-card" data-work="3">
+            <div class="work-thumb">
+              <img src="assets/work-4.jpg" alt="" onerror="this.style.display='none'">
+              <span class="work-icon">📸</span>
+            </div>
+            <div class="work-info">
+              <h3>品牌视觉内容策划与拍摄统筹</h3>
+              <p>统筹品牌画册、形象大片的视觉创意策划与现场监督指导</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVALUATION ===== -->
+    <section id="evaluation" class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Self-evaluation</span>
+          <h2 class="section-title">自我评价</h2>
+        </div>
+
+        <div class="eval-grid">
+          <div class="eval-card">
+            <span class="eval-num">01</span>
+            <h3>全链条经验</h3>
+            <p>10 年服装行业全链条经验，涵盖时尚女装与童装两大领域，从终端零售到总部视觉企划与管理，具备完整的职业成长路径。</p>
+          </div>
+          <div class="eval-card">
+            <span class="eval-num">02</span>
+            <h3>核心能力</h3>
+            <p>精通陈列标准制定、团队带教管理与终端培训赋能三大核心能力，能够独立承担陈列部门的日常管理与培训工作。</p>
+          </div>
+          <div class="eval-card">
+            <span class="eval-num">03</span>
+            <h3>经营思维</h3>
+            <p>具备极强的经营逻辑与目标导向思维，善于将品牌视觉策略与商品销售目标相结合，通过陈列优化直接驱动业绩增长。</p>
+          </div>
+          <div class="eval-card">
+            <span class="eval-num">04</span>
+            <h3>协同能力</h3>
+            <p>拥有良好的跨部门沟通与组织协调能力，能够有效协同设计、零售、市场等部门，共同推动品牌视觉目标达成。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-left">Ada 蔡娜丹</span>
+      <span class="footer-right">592430590@qq.com · &copy; 2026</span>
+    </div>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="workModal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="关闭">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-thumb" id="modalThumb"></div>
+      <h3 class="modal-title" id="modalTitle"></h3>
+      <p class="modal-desc" id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
