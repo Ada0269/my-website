@@ -851,49 +851,83 @@ ul { list-style: none; }
 .footer-right { font-size: 0.8rem; color: var(--text-tertiary); }
 
 /* ============================================================
-   WORK MODAL
+   GALLERY MODAL
    ============================================================ */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex; align-items: center; justify-content: center;
   z-index: 2000;
   opacity: 0; visibility: hidden;
   transition: opacity var(--transition), visibility var(--transition);
-  padding: 24px;
+  padding: 32px;
 }
 .modal-overlay.open { opacity: 1; visibility: visible; }
 
-.modal-card {
+.gallery-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  max-width: 500px; width: 100%;
-  padding: 32px;
+  max-width: 780px; width: 100%;
+  padding: 24px 24px 28px;
   position: relative;
   transform: translateY(12px);
   transition: transform var(--transition);
 }
-.modal-overlay.open .modal-card { transform: translateY(0); }
+.modal-overlay.open .gallery-card { transform: translateY(0); }
 
-.modal-close {
-  position: absolute; top: 12px; right: 12px;
-  background: none; border: none; cursor: pointer;
-  color: var(--text-tertiary); padding: 6px; border-radius: 6px;
+.gallery-close {
+  position: absolute; top: 12px; right: 12px; z-index: 10;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 50%; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-secondary);
   transition: all var(--transition);
 }
-.modal-close:hover { background: var(--surface-hover); color: var(--text-primary); }
+.gallery-close:hover { background: var(--surface-hover); color: var(--text-primary); border-color: var(--accent-border); }
 
-.modal-thumb {
-  aspect-ratio: 16 / 10; background: var(--accent-subtle);
-  border-radius: var(--radius-sm); display: flex;
-  align-items: center; justify-content: center; font-size: 2.5rem;
-  margin-bottom: 20px; opacity: 0.5;
+/* Stage */
+.gallery-stage {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--accent-subtle);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
 }
-.modal-title { font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
-.modal-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+.gallery-img {
+  width: 100%; height: auto; max-height: 60vh;
+  object-fit: contain; display: block;
+  background: #000;
+}
+
+/* Arrows */
+.gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.45); border: none;
+  border-radius: 50%; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: #fff; z-index: 5;
+  transition: background var(--transition);
+}
+.gallery-arrow:hover { background: rgba(0,0,0,0.7); }
+.gallery-arrow:disabled { opacity: 0.25; cursor: default; }
+.gallery-prev { left: 12px; }
+.gallery-next { right: 12px; }
+
+/* Counter */
+.gallery-counter {
+  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.5); color: #fff;
+  font-size: 0.78rem; font-weight: 500;
+  padding: 4px 12px; border-radius: 12px;
+  letter-spacing: 0.04em;
+}
+
+.gallery-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+.gallery-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
 
 /* ============================================================
    SCROLL REVEAL
@@ -987,6 +1021,7 @@ ul { list-style: none; }
   /* Footer */
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
 
-  /* Modal */
-  .modal-card { padding: 24px; }
+  /* Gallery */
+  .gallery-card { padding: 16px 16px 20px; }
+  .gallery-arrow { width: 32px; height: 32px; }
 }

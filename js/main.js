@@ -118,63 +118,107 @@
   });
 
   // ============================================================
-  // WORK MODAL
+  // GALLERY MODAL
   // ============================================================
   const modal = document.getElementById('workModal');
-  const modalThumb = document.getElementById('modalThumb');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const modalClose = modal.querySelector('.modal-close');
+  const galleryImg = document.getElementById('galleryImg');
+  const galleryTitle = document.getElementById('galleryTitle');
+  const galleryDesc = document.getElementById('galleryDesc');
+  const galleryCounter = document.getElementById('galleryCounter');
+  const btnPrev = modal.querySelector('.gallery-prev');
+  const btnNext = modal.querySelector('.gallery-next');
+  const btnClose = modal.querySelector('.gallery-close');
 
+  // Each project: folder + image count
   const workData = [
     {
-      icon: '🎪',
+      folder: 'assets/works/window-display',
+      count: 5,
       title: '季节主题橱窗与营销活动陈列项目',
       desc: '负责多季主题橱窗及多场营销活动的陈列方案制定与全国落地，协同空间设计部门完成方案优化，确保创意与执行的平衡，有效带动门店客流与销售额提升。'
     },
     {
-      icon: '🔧',
+      folder: 'assets/works/props-upgrade',
+      count: 5,
       title: '店务陈列道具迭代升级项目',
       desc: '主导完成多代核心道具系统的研发与标准制定，兼顾品牌调性、终端实用性与成本管控，为公司节省大量采购成本。'
     },
     {
-      icon: '🏛',
+      folder: 'assets/works/showroom',
+      count: 5,
       title: '品牌样板展示空间打造项目',
       desc: '负责多季订货会静态展厅与多届宁波服装节展厅的设计与布场，打造品牌最高标准的视觉样板，为全国门店提供可复制的参考范本。'
     },
     {
-      icon: '📸',
+      folder: 'assets/works/visual-content',
+      count: 5,
       title: '品牌视觉内容策划与拍摄统筹项目',
       desc: '统筹品牌画册、形象大片的视觉创意策划与现场监督指导，全流程把控成片风格与输出质量，为品牌市场推广提供高质量视觉素材支撑。'
     }
   ];
 
-  function openModal(index) {
-    const data = workData[index];
-    modalThumb.textContent = data.icon;
-    modalTitle.textContent = data.title;
-    modalDesc.textContent = data.desc;
+  let currentProject = -1;
+  let currentIndex = 0;
+
+  function getImagePath(folder, idx) {
+    const n = String(idx + 1).padStart(2, '0');
+    return folder + '/' + n + '.jpg';
+  }
+
+  function updateGallery() {
+    const data = workData[currentProject];
+    galleryImg.src = getImagePath(data.folder, currentIndex);
+    galleryTitle.textContent = data.title;
+    galleryDesc.textContent = data.desc;
+    galleryCounter.textContent = (currentIndex + 1) + ' / ' + data.count;
+    btnPrev.disabled = currentIndex === 0;
+    btnNext.disabled = currentIndex === data.count - 1;
+  }
+
+  function openGallery(index) {
+    currentProject = index;
+    currentIndex = 0;
+    updateGallery();
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeModal() {
+  function closeGallery() {
     modal.classList.remove('open');
     document.body.style.overflow = '';
   }
 
+  function prevImage() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateGallery();
+    }
+  }
+
+  function nextImage() {
+    if (currentIndex < workData[currentProject].count - 1) {
+      currentIndex++;
+      updateGallery();
+    }
+  }
+
   document.querySelectorAll('.work-card').forEach((card) => {
     card.addEventListener('click', () => {
-      openModal(parseInt(card.dataset.work));
+      openGallery(parseInt(card.dataset.work));
     });
   });
 
-  modalClose.addEventListener('click', closeModal);
+  btnPrev.addEventListener('click', prevImage);
+  btnNext.addEventListener('click', nextImage);
+  btnClose.addEventListener('click', closeGallery);
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal) closeGallery();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === 'ArrowRight') nextImage();
   });
 
   // ============================================================
