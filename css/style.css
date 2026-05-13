@@ -816,12 +816,27 @@ ul { list-style: none; }
 /* ============================================================
    EVALUATION
    ============================================================ */
+.eval-layout {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 5vw, 48px);
+}
 .eval-single {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 36px 40px;
+  flex: 1;
   max-width: 720px;
+}
+.eval-figure {
+  flex-shrink: 0;
+  animation: avatarFloat 5s ease-in-out infinite;
+}
+.eval-figure img {
+  width: auto;
+  max-height: 320px;
+  object-fit: contain;
 }
 .eval-list {
   list-style: none;
@@ -1025,7 +1040,9 @@ ul { list-style: none; }
   .works-grid { grid-template-columns: 1fr; }
 
   /* Evaluation */
+  .eval-layout { flex-direction: column-reverse; }
   .eval-single { padding: 28px 24px; }
+  .eval-figure img { max-height: 200px; }
 
   /* Footer */
   .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
