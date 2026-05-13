@@ -358,7 +358,25 @@ ul { list-style: none; }
 }
 
 .section-cta {
-  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all var(--transition);
+  margin-top: 28px;
+}
+.section-cta:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 @keyframes avatarFloat {
