@@ -1078,3 +1078,11 @@ ul { list-style: none; }
   .gallery-card { padding: 16px 16px 20px; }
   .gallery-arrow { width: 32px; height: 32px; }
 }
+
+/* 这一行是中文注释，电脑完全忽略，不影响功能 */
+.character {
+    display: block !important;   /* 全英文，生效 */
+    animation-play-state: running !important;  /* 全英文，生效 */
+    visibility: visible !important;  /* 全英文，生效 */
+    opacity: 1 !important;  /* 全英文，生效 */
+}
