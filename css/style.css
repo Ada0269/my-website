@@ -1,4 +1,4 @@
-/* ============================================================/* ============================================================
+/* ============================================================/* ============================================================/* ============================================================/* ============================================================
    DESIGN SYSTEM
    Notion whitespace × Linear grid × Apple typography
    ============================================================ */
@@ -1077,20 +1077,4 @@ ul { list-style: none; }
   /* Gallery */
   .gallery-card { padding: 16px 16px 20px; }
   .gallery-arrow { width: 32px; height: 32px; }
-}
-/* 终极修复：解决 Safari 手机端动画不显示 */
-.character {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: static !important;
-    width: auto !important;
-    height: auto !important;
-    background-repeat: no-repeat !important;
-    background-size: contain !important;
-    background-image: url('/assets/5月13日.gif') !important;
-    animation: walk 1s infinite steps(4) !important;
-    -webkit-animation: walk 1s infinite steps(4) !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
 }
